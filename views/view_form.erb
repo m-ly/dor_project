@@ -1,0 +1,56 @@
+<h1><%= @form_name %></h1>
+  <ul>
+  <% @criteria.each do |info| %>
+    <li>
+      <%= info %>
+        <a href="">Delete</a>
+        <div class="rating-container">
+          <div class="row">
+            
+            <div>
+              <p class="page-header">Daily Rating</p>
+              <div class="chart-scale">
+                <button class="btn btn-scale btn-scale-asc-1">1</button>
+                <button class="btn btn-scale btn-scale-asc-2">2</button>
+                <button class="btn btn-scale btn-scale-asc-3">3</button>
+                <button class="btn btn-scale btn-scale-asc-4">4</button>
+                <button class="btn btn-scale btn-scale-asc-5">5</button>
+                <button class="btn btn-scale btn-scale-asc-6">6</button>
+                <button class="btn btn-scale btn-scale-asc-7">7</button>
+                <button class="btn btn-scale btn-scale-asc-8">8</button>
+                <button class="btn btn-scale btn-scale-asc-9">9</button>
+                <button class="btn btn-scale btn-scale-asc-10">10</button>
+                <input class="btn-value" />
+              </div>
+              
+              <div>
+                <label for="<%= info %>">
+                  <textarea name="<%= info %>" rows=15 columns=300></textarea>
+                </label>
+              </div>
+
+          </div>
+        </div>
+    </li>
+  <% end %>
+  </ul>
+
+
+<form action="/forms/<%= @form_id %>" method="post" class="#">
+  <dl>
+      <dt>
+      <label for="criteria">Criteria:</label> 
+      </dt>
+      <dd>
+          <input name="criteria" placeholder="Observation Criteria" type="text" value="">
+      </dd>
+      <input type="submit" value="Create New Criteria">
+      <a href="/forms/<%= @form_id %>" name="text_box">Create a new text box</a>
+      <a href ="/forms/<%= @form_id %>" >Save Form</button>
+      <a href="/forms">Cancel</a>
+  </dl>
+</form>
+
+
+  
+

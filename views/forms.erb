@@ -1,0 +1,14 @@
+
+<% @forms.each_with_index do |form, index| %>
+  <ul>
+    <li>
+      <a href="/forms/<%= index %>"><%= form[:document_name] %></a>
+      <a href="forms/<%= index %>/edit">Edit</a>
+    </li>
+  </ul>
+<% end %>
+
+
+<form action="/forms/create" method="get" #class="create">
+    <button type="submit">Create A New Document</button>
+</form>

@@ -1,0 +1,18 @@
+<% @trainers.each do |trainer| %>
+ <ul>
+   <li><%= trainer %></li>
+ </ul>
+<% end %>
+
+
+<form action="/trainers/new" method="post" class="#">
+  <dl>
+      <dt>
+      <label for="Add A Trainer">Add A Trainer:</label> 
+      </dt>
+      <dd>
+          <input name="add_trainer" placeholder="Trainer Name" type="text" value="">
+      </dd>
+      <input type="submit" value="Add a Trainer">
+  </dl>
+</form>
