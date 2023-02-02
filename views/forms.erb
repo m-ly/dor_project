@@ -2,8 +2,11 @@
 <% @forms.each_with_index do |form, index| %>
   <ul>
     <li>
-      <a href="/forms/<%= index %>"><%= form[:document_name] %></a>
-      <a href="forms/<%= index %>/edit">Edit</a>
+      <a href="/forms/<%= index %>" method="get"><%= form[:document_name] %></a>
+      <a href="forms/<%= index %>/edit" method="get">Edit</a>
+      <form action="forms/<%= index %>/delete" method="post" >
+        <button type="submit">Delete</button>
+      </form>
     </li>
   </ul>
 <% end %>

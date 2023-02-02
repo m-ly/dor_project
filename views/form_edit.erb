@@ -1,10 +1,5 @@
+
 <h1><%= @form_name %></h1>
-  <div>
-    Trainee Name: <input type="text" name="name" placeholder="Enter Form Text" type="text" value="">
-    Trainer Name: <%= @trainer_name%>Trainer
-    Date: <%= @date %> PLACEHOLDER DATE
-    Phase:
-  </div>
   <ul>
   <% @criteria.each_with_index do |info, index| %>
     <li>
@@ -48,12 +43,38 @@
         </label>
       </div>
     <% end %>
-  <% end %>
-</ul>
+    
+    <form action="/forms/<%= @form_id %>/delete/<%= index %>" method="post">
+      <button type="submit">Delete</button>
+    </form>
 
-<form action="/forms/<%= @form_id %>/save <%= @index %>" method="post">
-  <button type="submit">Save</button>
+  <% end %>
+  </ul>
+
+
+
+<form action="/forms/<%= @form_id %>/criteria" name="graded_criteria"   method="post" class="#">
+  <input type="text" name="text" placeholder="Enter Form Text" type="text" value="">
+
+  <button>
+    Create New Criteria
+  </button>
+
+  <button type="submit" formaction="/forms/<%= @form_id %>/section-header" name="section_header" >
+    Create a Subsection
+  </button>
+
+  <button atype="submit" formaction="/forms/<%= @form_id %>/text-box" name="text_box">
+    Create a Text Box
+  </button>
+
+  <button type="submit" formaction="/forms/<%= @form_id %>" method="post" >
+    Save Form
+  </button>
+
+  <a href="/forms" method="get">
+    Cancel
+  </a>
 </form>
 
-  
 

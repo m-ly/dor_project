@@ -1,3 +1,12 @@
+<% session[:forms].each_with_index do |form, index| %>
+  <ul>
+    <li>
+      <a href="/forms/<%= index %>" method="get"><%= form[:document_name] %></a>
+    </li>
+  </ul>
+<% end %>
+
+
 <% @trainers.each do |trainer| %>
  <ul>
    <li><%= trainer %></li>
