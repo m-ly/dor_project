@@ -1,59 +1,76 @@
+<script src="/js/evaluations.js"></script>
+
+<% @data.each do |ele| %>
+  <%= ele %>
+<% end %>
+
 <h1><%= @form_name %></h1>
-  <div>
-    Trainee Name: <input type="text" name="name" placeholder="Enter Form Text" type="text" value="">
-    Trainer Name: <%= @trainer_name%>Trainer
-    Date: <%= @date %> PLACEHOLDER DATE
-    Phase:
-  </div>
-  <ul>
-  <% @criteria.each_with_index do |info, index| %>
-    <li>
-      <% if info[:type] == "graded_criteria" %>
-        <strong><%= info[:text] %></strong>
-          
-          <div class="rating-container">
-            <div class="row">
-              
-              <div>
-                <p class="page-header">Daily Rating</p>
-                <div class="chart-scale">
-                  <button class="btn btn-scale btn-scale-asc-1">1</button>
-                  <button class="btn btn-scale btn-scale-asc-2">2</button>
-                  <button class="btn btn-scale btn-scale-asc-3">3</button>
-                  <button class="btn btn-scale btn-scale-asc-4">4</button>
-                  <button class="btn btn-scale btn-scale-asc-5">5</button>
-                  <button class="btn btn-scale btn-scale-asc-6">6</button>
-                  <button class="btn btn-scale btn-scale-asc-7">7</button>
-                  <button class="btn btn-scale btn-scale-asc-8">8</button>
-                  <button class="btn btn-scale btn-scale-asc-9">9</button>
-                  <button class="btn btn-scale btn-scale-asc-10">10</button>
-                </div>
-                
-                <div>
-                  <label for="<%= info[:text] %>">
-                    <textarea name="<%= info[:text] %>" rows=15 columns=300 placeholder=""></textarea>
-                  </label>
-                </div>
 
+<div id="templateIdContainer" data-form-id="<%=@form_id%>">
+  <form action="/evals/<%= @form_id %>/save" method="post">
+      <dl>
+        <dt>
+          <label for="trainee-name">Trainee Name:</label> 
+        </dt>
+        <dd>
+          <select name="trainee-name" id="trainee-name">
+            <% @trainees.each do |trainee| %>
+              <option value="<%= trainee['id']%>" selected><%= trainee['last_name'] %>,<%= trainee['first_name']%></option>
+            <% end %>
+          </select>
+          Trainer Name: <%= @trainer_name%>Trainer
+          Date: <%= @date  %> 
+          Phase:
+        </dd>
+      </dl>
+
+    <ul>
+      <% @data.each_with_index do |form_element, index| %>
+        <div id="<%=form_element['criteria_id']%>">
+          <% if form_element['element_type'] === 'sectionHeading' %>
+              <h2><%= form_element['heading'] %></h2>
+          <% elsif form_element['element_type'] === 'gradedCriteria' %>
+            <b class=""><%= form_element['heading'] %></b>
+            <p class="page-header">Daily Rating</p>
+            <div id="chart-scale-<%= form_element['section_id']%>">
+              <div class="scale-buttons">
+                <button class="btn-scale btn-scale-asc" data-value="1">1</button>
+                <button class="btn-scale btn-scale-asc" data-value="2">2</button>
+                <button class="btn-scale btn-scale-asc" data-value="3">3</button>
+                <button class="btn-scale btn-scale-asc" data-value="4">4</button>
+                <button class="btn-scale btn-scale-asc" data-value="5">5</button>
+                <button class="btn-scale btn-scale-asc" data-value="6">6</button>
+                <button class="btn-scale btn-scale-asc" data-value="7">7</button>
+                <button class="btn-scale btn-scale-asc" data-value="8">8</button>
+                <button class="btn-scale btn-scale-asc" data-value="9">9</button>
+                <button class="btn-scale btn-scale-asc" data-value="10">10</button>
+              </div>
             </div>
-          </div>
-      </li>
-    <% elsif info[:type] == "section_header" %>
-      <h2><%= info[:text] %></h2>
-    <% elsif info[:type] == "text_box" %>
-     <strong><%= info[:text] %></strong>
-      <div>
-        <label for="<%= info[:text] %>">
-          <textarea name="<%= info[:text] %>" rows=15 columns=300></textarea>
-        </label>
-      </div>
-    <% end %>
-  <% end %>
-</ul>
+    
+            <div>
+              <textarea id="text-<%=form_element['criteria_id']%>" name="text-<%=form_element['criteria_id']%>" rows=15 cols=80 placeholder=""></textarea>
+            </div>
+          <% else %>
+            <b class=""><%= form_element['heading'] %></b>
+      
+            <div id='<%=form_element['section_id']%>-<%=form_element['subsection_id']%>-textValue'>
+              <textarea id="text-<%=form_element['criteria_id']%>" name=id="text-<%=form_element['criteria_id']%>" rows=15 cols=80 placeholder=""></textarea>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </ul> 
 
-<form action="/forms/<%= @form_id %>/save <%= @index %>" method="post">
-  <button type="submit">Save</button>
-</form>
+  
+    <button id='saveEval' type="submit">Save</button>
+  </form>
+</div>
+
+
+  
+  
+
+
 
   
 

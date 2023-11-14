@@ -1,19 +1,7 @@
 <% @trainees.each do |trainee| %>
   <ul>
     <li>
-      <a href="/trainees/<%=trainee%>"><%= trainee %></a>
+      <a href="/trainees/<%=trainee["id"]%>"><%=trainee["last_name"]%>, <%=trainee["first_name"]%></a>
     </li>
   </ul>
 <% end %>
-
-<form action="/trainees/new" method="post" class="#">
-  <dl>
-      <dt>
-      <label for="Add A Trainee">Add A Trainee:</label> 
-      </dt>
-      <dd>
-          <input name="add_trainee" placeholder="Trainee Name" type="text" value="">
-      </dd>
-      <input type="submit" value="Add a Trainee">
-  </dl>
-</form>

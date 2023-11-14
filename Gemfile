@@ -6,7 +6,11 @@ gem "sinatra", "~>1.4.7"  # This includes ERB
 gem "sinatra-contrib"
 
 
-# ERB helper -- 
+# ERB helper --
 gem "erubis"
 # Web Server dependency
 gem "webrick"
+gem 'bcrypt'
+gem 'securerandom'
+gem 'redcarpet'
+gem 'pry'

@@ -1,15 +1,26 @@
-
-<% @forms.each_with_index do |form, index| %>
+ <div id='templates'>
   <ul>
-    <li>
-      <a href="/forms/<%= index %>" method="get"><%= form[:document_name] %></a>
-      <a href="forms/<%= index %>/edit" method="get">Edit</a>
-      <form action="forms/<%= index %>/delete" method="post" >
-        <button type="submit">Delete</button>
-      </form>
-    </li>
+    <% @templates.each_with_index do |template, index| %>
+        <li>
+          <a href="/forms/<%= template['id'] %>" method="get"><%= template['title'] %></a>
+          <a href="/forms/<%= template['id'] %>/edit" method="get">Edit</a>
+          <form action="/forms/<%= template['id'] %>/delete" method="post">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+    <% end %>
   </ul>
-<% end %>
+</div>
+
+<div id='evaluations'>
+  <ul>
+    <% @evaluations.each do |eval| %>
+      <li>
+        <a href="/eval/<%= eval[:id] %>"><%= eval[:title] %></a>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 
 <form action="/forms/create" method="get" #class="create">

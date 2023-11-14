@@ -2,7 +2,8 @@ header {
   background-color: rgb(63, 132, 193);
 }
 
-.btn-scale {
+
+.scale-box {
   min-width: 44px;
   width: 6%;
   text-align: center;
@@ -10,4 +11,3 @@ header {
   color: black;
   font-family: 'Lato', sans-serif;
 }
-

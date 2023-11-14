@@ -1,27 +1,9 @@
-<% session[:forms].each_with_index do |form, index| %>
-  <ul>
+<% @trainers.each do |trainer| %>
+ <ul>
     <li>
-      <a href="/forms/<%= index %>" method="get"><%= form[:document_name] %></a>
+      <a href="/trainer/<%=trainer["id"]%>"><%=trainer["last_name"]%>, <%=trainer["first_name"]%></a>
     </li>
   </ul>
 <% end %>
 
 
-<% @trainers.each do |trainer| %>
- <ul>
-   <li><%= trainer %></li>
- </ul>
-<% end %>
-
-
-<form action="/trainers/new" method="post" class="#">
-  <dl>
-      <dt>
-      <label for="Add A Trainer">Add A Trainer:</label> 
-      </dt>
-      <dd>
-          <input name="add_trainer" placeholder="Trainer Name" type="text" value="">
-      </dd>
-      <input type="submit" value="Add a Trainer">
-  </dl>
-</form>
