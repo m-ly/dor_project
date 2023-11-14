@@ -1,0 +1,36 @@
+<h1><%= @responses.first[:template_title] %> Evaluation</h1>
+
+
+<dl>
+  <dt>
+  </dt>
+  <dd name="trainee-name" id="trainee-name">
+    Trainee Name: <%= @responses.first[:last_name] %>, <%= @responses.first[:first_name] %>
+  </dd>
+  <dd>
+    Trainer Name: <%= @trainer_name %> Trainer
+  </dd>
+  <dd>
+    Date: <%= @date  %> 
+  </dd>
+  <dd>
+    Phase: <%= @responses.first[:template_title] %>
+  </dd>
+</dl>
+  
+
+  <% @responses.each do |response| %>
+    <div id="">
+      <% if response[:element_type] === 'sectionHeading' %>
+        <h2><%= response[:heading] %></h2>
+      <% elsif response[:element_type] === 'gradedCriteria' %>
+        <b class=""><%= response[:heading] %></b>
+        <p class="page-header">Daily Rating: <%= response[:response_rating]%>/10</p>
+        <p><%= response[:response_value] %></p>
+      <% else %>
+        <b class=""><%= response['heading'] %></b>
+        </p><%= response[:response_value]%></p>
+      <% end%>
+    </div>
+     
+  <% end %>

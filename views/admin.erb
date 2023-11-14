@@ -1,0 +1,87 @@
+<%= @assigned %>
+
+<%# 
+<form action="/trainees/new" method="post" class="#">
+  <dl>
+      <dt>
+      <label for="Add A Trainee">Add A Trainee:</label> 
+      </dt>
+      <dd>
+          <input name="add_trainee" placeholder="Trainee Name" type="text" value="">
+      </dd>
+      <input type="submit" value="Add a Trainee">
+  </dl>
+</form>
+
+
+<form action="/trainers/new" method="post" class="#">
+  <dl>
+      <dt>
+      <label for="Add A Trainer">Add A Trainer:</label> 
+      </dt>
+      <dd>
+          <input name="add_trainer" placeholder="Trainer Name" type="text" value="">
+      </dd>
+      <input type="submit" value="Add a Trainer">
+  </dl>
+</form> %>
+
+
+<form action="/users/new" method="post" class="#">
+    
+    <dl>
+      <dt>
+        <label for="Add a User">Add a User:</label>
+      </dt>
+      <dd>
+        <label for=first_name>First Name:<label>
+        <input name="first_name" placeholder="First Name" type="text" value=""></br>
+        <label for=last_name>Last Name:<label>
+        <input name="last_name" placeholder="Last Name" type="text" value=""></br>
+        <label for=email>Email:<label>
+        <input name="email" placeholder="Email" type="email" value=""></br>
+        <label for=password>Password:<label>
+        <input name="password" placeholder="Password" type="password" value=""></br>
+        <label for=user_type>User Type:<label>
+        <input type="radio" id="admin" name="user_type" value="is_admin">
+        <label for="admin">Admin</label>
+        <input type="radio" id="supervisor" name="user_type" value="is_supervisor">
+        <label for="supervisorr">Supervisor</label>
+        <input type="radio" id="trainer" name="user_type" value="is_trainer">
+        <label for="trainer">Trainer</label>
+        <input type="radio" id="trainee" name="user_type" value="is_trainee">
+        <label for="trainee">Trainee</label>
+      </dd>
+    </dl>
+    
+    <input type="submit" value="Add a User">
+</form>
+
+<fieldset>
+<form action="/assign" method="post" class="#">
+  <label for="#">Assign a trainer</label>
+  <dl>
+      <dt>
+      <label for="trainer_name">Trainer:</label> 
+      </dt>
+      <dd>
+        <select name="trainer_name" id="trainer_name">
+          <% @trainers.each do |trainer| %>
+            <option value="<%= trainer %>" selected><%= trainer %></option>
+          <% end %>
+        </select>
+      </dd>
+       <dt>
+      <label for="Add A Trainer">Trainee:</label> 
+      </dt>
+      <dd>
+         <select name="trainee_name" id="trainee_name">
+           <% @trainees.each do |trainee| %>
+            <option value="<%=trainee %>" selected><%= trainee %></option>
+           <% end %>
+        </select>
+      </dd>
+      <input type="submit" value="Assign">
+  </dl>
+</form>
+</fieldset>
